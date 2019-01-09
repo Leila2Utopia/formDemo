@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>login</title>
+
+</head>
+<body>
+{#自定义模板#}
+{#<form action="" method="post" novalidate>#}
+{#    {% csrf_token %}#}
+{#    <p><input type="text" name="user">用户名 <span>{{ form.errors.user.0 }}</span></p>#}
+{#    <p><input type="password" name="pwd">密码 <span>{{ form.errors.pwd.0 }}</span></p>#}
+{#    <p><input type="submit"></p>#}
+{#</form>#}
+
+{#form表单模板#}
+{#第一种#}
+{#<form action="" method="post">#}
+{#    {% csrf_token %}#}
+{#    {{ form.as_p }}#}
+{#    <input type="submit">#}
+{#</form>#}
+{##}
+{#第二种#}
+{#<form action="" method="post">#}
+{#    {% csrf_token %}#}
+{#    <div>#}
+{#        用户名{{ form.user }}#}
+{#    </div>#}
+{#    <div>#}
+{#        密码{{ form.pwd }}#}
+{#    </div>#}
+{#    <div>#}
+{#        <input type="submit">#}
+{#    </div>#}
+{#</form>#}
+
+{#第三种#}
+<form action="" method="post" novalidate>
+   {% csrf_token %}
+    {% for field in form %}
+        <div>
+        <lable for="">{{ field.label }}</lable>
+        {{ field }}
+        <span>{{ field.errors}}</span>
+        </div>
+    {% endfor %}
+    <input type="submit">
+
+{#{{ form.as_table }}#}
+{#以表格的形式将它们渲染在<tr>标签中#}
+{#{{ form.as_p }}#}
+{#将它们渲染在<p>标签中#}
+{#{{ form.as_ul }}#}
+{#将它们渲染在<li>标签中#}
+{#你必须自己提供<table>或<ul>元素#}
+</form>
+</body>
+</html>
